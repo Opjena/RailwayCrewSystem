@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.database import SessionLocal
 from app.models.user import User
 from app.auth.hashing import hash_password
-from backend.app.core.enums import UserRole
+from app.core.enums import UserRole
 
 
 db: Session = SessionLocal()
@@ -28,3 +28,5 @@ db.add(admin)
 db.commit()
 
 print("Admin created successfully.")
+
+db.close()
