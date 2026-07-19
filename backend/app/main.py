@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from sqlalchemy import text
 
+from app.api.v1.api import api_router
 from app.db.database import engine
 
 app = FastAPI(
@@ -8,6 +9,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Register all API routes
+app.include_router(
+    api_router,
+    prefix="/api/v1"
+)
 
 @app.get("/")
 def root():
@@ -15,13 +21,11 @@ def root():
         "message": "Railway Crew Management System API"
     }
 
-
 @app.get("/health")
 def health():
     return {
         "status": "ok"
     }
-
 
 @app.get("/db-test")
 def db_test():

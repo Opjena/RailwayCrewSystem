@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 
-from app.models.user import User
-
 from app.auth.hashing import verify_password
+
+from app.repositories.user_repository import UserRepository
 
 
 def authenticate_user(
@@ -11,10 +11,9 @@ def authenticate_user(
     password: str,
 ):
 
-    user = (
-        db.query(User)
-        .filter(User.username == username)
-        .first()
+    user = UserRepository.get_by_username(
+        db,
+        username,
     )
 
     if not user:
