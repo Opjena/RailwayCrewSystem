@@ -39,3 +39,6 @@ class Assignment(Base):
 
     shift: Mapped["Shift"] = relationship("Shift", back_populates="assignments")
     crew: Mapped["Crew"] = relationship("Crew", back_populates="assignments")
+
+    def __repr__(self) -> str:
+        return f"Assignment(id={self.id}, shift_id={self.shift_id}, crew_id={self.crew_id}, status={self.status})"
