@@ -43,19 +43,12 @@ def upgrade() -> None:
 
     # availabilities indexes
     op.create_index('ix_availabilities_crew_id', 'availabilities', ['crew_id'], unique=False)
-    op.create_index(
-        'ix_availabilities_available_date',
-        'availabilities',
-        ['available_date'],
-        unique=False,
-    )
     op.create_index('ix_availabilities_status', 'availabilities', ['status'], unique=False)
 
 
 def downgrade() -> None:
     # Drop indexes first
     op.drop_index('ix_availabilities_status', table_name='availabilities')
-    op.drop_index('ix_availabilities_available_date', table_name='availabilities')
     op.drop_index('ix_availabilities_crew_id', table_name='availabilities')
 
     op.drop_constraint('uq_availabilities_crew_date', 'availabilities', type_='unique')
@@ -65,4 +58,3 @@ def downgrade() -> None:
     op.drop_index('ix_assignments_shift_id', table_name='assignments')
 
     op.drop_constraint('uq_assignments_shift_crew', 'assignments', type_='unique')
-

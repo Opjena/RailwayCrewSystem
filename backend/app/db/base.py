@@ -6,3 +6,8 @@ from app.models.crew import Crew
 from app.models.shift import Shift
 from app.models.assignment import Assignment
 from app.models.availability import Availability
+from app.models.lobby import Lobby
+from app.models.train import Train
+from app.models.duty import Duty
+from app.models.import_log import ImportLog
+from app.models.audit_log import AuditLog

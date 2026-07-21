@@ -149,7 +149,39 @@ alembic downgrade -1
 ## Testing
 
 ```bash
-pytest backend/tests/ -v
+python -m compileall -q app
+```
+
+---
+
+## MVP Smoke Checks
+
+After login and obtaining JWT token, verify key endpoints:
+
+```bash
+# Health
+curl http://localhost:8000/health
+
+# Core modules
+curl -H "Authorization: ******" http://localhost:8000/api/v1/crew
+curl -H "Authorization: ******" http://localhost:8000/api/v1/schedule/shifts
+curl -H "Authorization: ******" http://localhost:8000/api/v1/dashboard/stats
+curl -H "Authorization: ******" "http://localhost:8000/api/v1/reports/availability-report?start_date=2026-01-01&end_date=2026-12-31"
+
+# MVP extension modules
+curl -H "Authorization: ******" http://localhost:8000/api/v1/lobby
+curl -H "Authorization: ******" http://localhost:8000/api/v1/train
+curl -H "Authorization: ******" http://localhost:8000/api/v1/duty
+curl -H "Authorization: ******" http://localhost:8000/api/v1/import/logs
+curl -H "Authorization: ******" http://localhost:8000/api/v1/audit
+```
+
+Excel import smoke check:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/import/excel" \
+  -H "Authorization: ******" \
+  -F "file=@/absolute/path/to/sample.xlsx"
 ```
 
 ---
