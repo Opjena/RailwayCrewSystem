@@ -12,8 +12,7 @@ class Duty(Base):
 
     # PRD-aligned fields are TODO until PRD table spec is fully known.
     duty_code: Mapped[str] = mapped_column(String(50), nullable=False, unique=True)
-    description: Mapped[str] = mapped_column(String(255), nullable=True)
+    description: Mapped[str | None] = mapped_column(String(255), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-
