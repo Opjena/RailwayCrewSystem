@@ -1,44 +1,43 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel, ConfigDict, Field
+
 from app.core.enums import Department
 
 
 class CrewCreate(BaseModel):
-    crew_id: str
-    full_name: str
+    crew_id: str = Field(..., min_length=1, max_length=50)
+    full_name: str = Field(..., min_length=2, max_length=100)
     department: Department
-    email: EmailStr
-    phone: str | None = None
+    mobile_number: str = Field(..., min_length=10, max_length=15)
+    designation: str = Field(..., min_length=2, max_length=50)
+    password: str = Field(..., min_length=8)
 
 
 class CrewUpdate(BaseModel):
-    full_name: str | None = None
-    department: Department | None = None
-    email: EmailStr | None = None
-    phone: str | None = None
-    is_active: bool | None = None
+    full_name: Optional[str] = None
+    department: Optional[Department] = None
+    mobile_number: Optional[str] = None
+    designation: Optional[str] = None
+    is_active: Optional[bool] = None
 
 
 class CrewResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     crew_id: str
     full_name: str
     department: Department
-    email: EmailStr
-    phone: str | None
+    mobile_number: str
+    designation: str
     is_active: bool
     created_at: datetime
     updated_at: datetime
 
-    model_config = ConfigDict(from_attributes=True)
-
 
 class CrewListResponse(BaseModel):
-    id: int
-    crew_id: str
-    full_name: str
-    department: Department
-    email: EmailStr
-    is_active: bool
+    total: int
+    items: list[CrewResponse]
 
-    model_config = ConfigDict(from_attributes=True)
