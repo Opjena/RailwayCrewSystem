@@ -1,14 +1,7 @@
-# RailwayCrewSystem - TODO (Backend)
+# Railway Crew Management System - Implementation Progress
 
-## Phase 2 (Database Finalization)
-- [x] Fix/align Alembic heads and validate single head
-- [x] Install psycopg dependency required for Alembic/DB connection
-- [x] Ensure `alembic upgrade head` works with current DB migration state
-- [ ] Add DB-level uniqueness + indexes for duty-instance design:
-  - [ ] `assignments`: UNIQUE(shift_id, crew_id) and indexes on shift_id/crew_id/status
-  - [ ] `availabilities`: UNIQUE(crew_id, available_date) and indexes on crew_id/available_date/status
-- [ ] Create Alembic migration implementing the above constraints/indexes
-- [ ] Update SQLAlchemy models accordingly
-- [ ] Run `alembic upgrade head` to verify migrations apply
-- [ ] Run `python -m compileall -q app` to verify code compiles
+## Bug Fixes
+- [ ] Fix: JSON-serialize old_value/new_value in base_service.py AuditLog (dict can't bind to Text column in SQLite)
+- [ ] Fix: Remove duplicate router prefixes from api.py for cms, signon, main, archive (causes 404)
+- [ ] Fix: Change GET crew endpoints from require_supervisor to require_authenticated (viewer test fails)
 
