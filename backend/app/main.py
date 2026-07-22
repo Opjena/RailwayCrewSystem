@@ -2,11 +2,12 @@ from fastapi import FastAPI
 from sqlalchemy import text
 
 from app.api.v1.api import api_router
+from app.core.config import settings
 from app.db.database import engine
 
 app = FastAPI(
-    title="Railway Crew Management System API",
-    version="1.0.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION
 )
 
 # Register all API routes

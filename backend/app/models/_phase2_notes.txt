@@ -1,6 +1,0 @@
-Temp notes for Phase 2 DB constraints/indexes:
-- assignments unique(shift_id, crew_id)
-- assignments indexes: shift_id, crew_id, status
-- availabilities unique(crew_id, available_date)
-- availabilities indexes: crew_id, available_date, status
-
