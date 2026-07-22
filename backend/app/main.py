@@ -27,16 +27,4 @@ def health():
         "status": "ok"
     }
 
-@app.get("/db-test")
-def db_test():
-    try:
-        with engine.connect() as connection:
-            connection.execute(text("SELECT 1"))
-        return {
-            "database": "Connected Successfully"
-        }
-    except Exception as e:
-        return {
-            "database": "Connection Failed",
-            "error": str(e)
-        }
+    
