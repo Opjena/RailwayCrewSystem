@@ -1,4 +1,7 @@
+# Backend Completion Plan - Config & Enums Improvements
 
+## Step 1: Enhance `config.py`
+- [x] Add validation: `SecretStr`, `PositiveInt`, `PostgresDsn`
 - [x] Add missing API config: `APP_NAME`, `APP_VERSION`, `DEBUG`, `HOST`, `PORT`
 - [x] Add CORS settings: `ALLOWED_ORIGINS: list[str]`
 - [x] Add Scheduler config: `SCRAPER_INTERVAL_MINUTES`
@@ -16,11 +19,11 @@
 ## Step 3: Update `main.py`
 - [x] Use settings for APP_NAME and APP_VERSION
 
-## Step 4: Update `jwt.py`
-- [x] Use `settings.SECRET_KEY.get_secret_value()` for SecretStr type
+## Step 4: Fix dependent files
+- [x] Fix `database.py` — use `str(settings.DATABASE_URL)` and `settings.DEBUG`
+- [x] Fix `jwt.py` — use `.get_secret_value()` for `SecretStr`
+- [x] Fix `base.py` — update model imports (remove deleted models, add new ones)
+- [x] Fix `cms_service.py`, `signon_service.py`, `main_service.py`, `archive_service.py` — fix AuditLog field names
 
 ## Step 5: Verify
-- [x] Verify code compiles
-- [x] Verify enum values load correctly
-- [x] Verify Settings defaults load correctly
-
+- [x] Verify all modified files compile successfully
