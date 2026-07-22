@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import Boolean, DateTime, Enum, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.database import Base
 from app.core.enums import Department
@@ -65,3 +65,5 @@ class Crew(Base):
         default=datetime.utcnow,
         onupdate=datetime.utcnow,
     )
+
+    assignments = relationship("Assignment", back_populates="crew")

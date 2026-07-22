@@ -1,29 +1,19 @@
 """Extended RCMS backend entrypoint.
 
-Constraint: do NOT modify existing files.
-
-This file wires additional PRD modules (Lobby/Train/Duty/Import/Audit) via a separate
-ASGI application.
+This file is maintained for development reference. All production routes
+are registered in main.py via app/api/v1/api.py.
 
 Run (example):
-  uvicorn app.main_ext:app --reload
-
-Note: This requires the modules to be added under app/api/v1/endpoints/*.
+  uvicorn app.main:app --reload
 """
 
 from fastapi import FastAPI
-
-# Existing router wiring cannot be edited per constraint; this app only mounts
-# newly added routers that you will create.
 
 app = FastAPI(title="Railway Crew Management System API (Extended)", version="1.0.0")
 
 
 @app.get("/")
 def root():
-    return {"message": "RCMS Extended API"}
+    return {"message": "Use app.main:app for the production entrypoint."}
 
-
-# Routers are intentionally not imported here until the corresponding modules
-# exist. When you add new endpoints, update this file accordingly.
 

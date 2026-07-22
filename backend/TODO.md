@@ -1,8 +1,7 @@
-# Crew Module Implementation Steps
+# Railway Crew Management System - Implementation Progress
 
-- [x] Step 1: Create schemas/crew.py
-- [x] Step 2: Create repositories/crew_repository.py
-- [x] Step 3: Create services/crew_service.py
-- [x] Step 4: Create endpoints/crew.py
-- [x] Step 5: Commit to Git
+## Bug Fixes
+- [ ] Fix: JSON-serialize old_value/new_value in base_service.py AuditLog (dict can't bind to Text column in SQLite)
+- [ ] Fix: Remove duplicate router prefixes from api.py for cms, signon, main, archive (causes 404)
+- [ ] Fix: Change GET crew endpoints from require_supervisor to require_authenticated (viewer test fails)
 
