@@ -20,11 +20,9 @@ class MainDataService:
     ):
         log = AuditLog(
             action=action,
-            entity_type=entity_type,
-            entity_id=entity_id,
-            user_id=actor,
-            details=details,
-            ip_address=self.request.client.host if self.request else None,
+            entity=entity_type,
+            entity_id=str(entity_id),
+            actor_username=actor,
         )
         self.db.add(log)
         self.db.commit()

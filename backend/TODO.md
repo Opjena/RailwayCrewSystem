@@ -1,7 +1,4 @@
-# Backend Completion Plan - Config & Enums Improvements
 
-## Step 1: Enhance `config.py`
-- [x] Add validation: `SecretStr`, `PositiveInt`, `PostgresDsn`
 - [x] Add missing API config: `APP_NAME`, `APP_VERSION`, `DEBUG`, `HOST`, `PORT`
 - [x] Add CORS settings: `ALLOWED_ORIGINS: list[str]`
 - [x] Add Scheduler config: `SCRAPER_INTERVAL_MINUTES`
