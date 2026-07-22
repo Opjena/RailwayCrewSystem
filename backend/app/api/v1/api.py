@@ -5,7 +5,7 @@ from app.api.v1.endpoints.user import router as users_router
 from app.api.v1.endpoints.crew import router as crew_router
 from app.api.v1.endpoints.cms import router as cms_router
 from app.api.v1.endpoints.signon import router as signon_router
-from app.api.v1.endpoints.main import router as main_router
+from app.api.v1.endpoints.main_data import router as main_data_router
 from app.api.v1.endpoints.imports import router as imports_router
 from app.api.v1.endpoints.audit import router as audit_router
 from app.api.v1.endpoints.archive import router as archive_router
@@ -41,7 +41,7 @@ api_router.include_router(
 )
 
 api_router.include_router(
-    main_router,
+    main_data_router,
     prefix="/main-data",
     tags=["Main Data"],
 )
